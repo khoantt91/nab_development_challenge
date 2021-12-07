@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Define integer resource for some of rule, For example: max length of text, min password length, min value input, max value input etc.... -->
+    <integer name="max_length_text">100</integer>
+    <integer name="min_length_password">6</integer>
+
+    <!-- TextView Style -->
+    <style name="base_font">
+        <item name="android:fontFamily">@font/helveticaneue</item>
+    </style>
+
+    <style name="base_text_view" parent="base_font">
+        <item name="android:textColor">@color/md_blue_900</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="text_view_title" parent="base_text_view">
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_view_content" parent="base_text_view">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="text_view_note" parent="base_text_view">
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <!-- EditText Style -->
+    <style name="base_edit_text" parent="base_font">
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="android:textColor">@color/md_blue_900</item>
+        <item name="android:backgroundTint">@color/md_blue_100</item>
+    </style>
+
+    <style name="edit_text_primary" parent="base_edit_text">
+        <item name="android:layout_height">@dimen/button_height_normal</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="base_button" parent="base_font">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="button_primary" parent="base_button">
+        <item name="android:layout_height">@dimen/button_height_normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/md_orange_500</item>
+        <item name="android:textColor">@color/md_white_1000</item>
+    </style>
+
+</resources>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+
+    <!-- Common font size -->
+    <dimen name="font_large">20sp</dimen>
+    <dimen name="font_normal">16sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_tiny">10sp</dimen>
+
+    <!-- Common spacing & padding -->
+    <dimen name="spacing_large">28dp</dimen>
+    <dimen name="spacing_normal">20dp</dimen>
+    <dimen name="spacing_small">12dp</dimen>
+    <dimen name="spacing_tiny">8dp</dimen>
+
+    <!-- Common sizes of button -->
+    <dimen name="button_height_tall">60dp</dimen>
+    <dimen name="button_height_normal">40dp</dimen>
+    <dimen name="button_height_short">32dp</dimen>
+
+    <!-- Specific dimens: for some of special cases -->
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_28">28dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_44">44dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_52">52dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_68">68dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_76">76dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_84">84dp</dimen>
+    <dimen name="dp_88">88dp</dimen>
+    <dimen name="dp_92">92dp</dimen>
+    <dimen name="dp_94">94dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_104">104dp</dimen>
+    <dimen name="dp_108">108dp</dimen>
+    <dimen name="dp_112">112dp</dimen>
+    <dimen name="dp_116">116dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
+    <dimen name="dp_124">124dp</dimen>
+    <dimen name="dp_128">128dp</dimen>
+    <dimen name="dp_132">132dp</dimen>
+    <dimen name="dp_136">136dp</dimen>
+    <dimen name="dp_140">140dp</dimen>
+    <dimen name="dp_148">148dp</dimen>
+    <dimen name="dp_152">152dp</dimen>
+    <dimen name="dp_156">156dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
+    <dimen name="dp_164">164dp</dimen>
+    <dimen name="dp_168">168dp</dimen>
+    <dimen name="dp_172">172dp</dimen>
+    <dimen name="dp_176">176dp</dimen>
+    <dimen name="dp_180">180dp</dimen>
+    <dimen name="dp_184">184dp</dimen>
+    <dimen name="dp_188">188dp</dimen>
+    <dimen name="dp_192">192dp</dimen>
+    <dimen name="dp_196">196dp</dimen>
+    <dimen name="dp_200">200dp</dimen>
+
+</resources>

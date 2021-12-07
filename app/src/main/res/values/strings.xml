@@ -1,3 +1,63 @@
 <resources>
-    <string name="app_name">NabChallenge</string>
+
+    <!-- Basic principle: <WHERE>_<DESCRIPTION>
+              - <WHERE> to indicate where the string will be used, for example:
+                        login_title: title of Login Screen
+                        login_label_welcome: welcome label of Login Screen
+                        listing_title: title of Listing Screen
+                        common_done: generic done string
+                        array_type_deal: array string type of deal
+                        error_empty_field: Field is not empty error message
+
+        P/s: don't be afraid of repeating a value for two or more keys. Languages are complex, so namespaces are necessary to bring context and break ambiguity. -->
+
+    <string name="app_name">TemplateAndroidSource</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_title">Splash</string>
+    <string name="splash_label_instruction">This is Splash Screen</string>
+
+    <!-- Login Screen -->
+    <string name="login_title">Login</string>
+    <string name="login_label_welcome">Welcome to App</string>
+    <string name="login_label_instruction">This is Login Screen</string>
+    <string name="login_label_forgot_password">You forgot password?</string>
+
+    <!-- Forgot Password Screen -->
+    <string name="forgot_password_title">Forgot Password</string>
+    <string name="forgot_password_instruction">This is Forgot Password Screen</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">Home</string>
+    <string name="home_label_instruction">This is Home Screen</string>
+
+    <!-- Home Detail Screen -->
+    <string name="home_detail_title">Home Detail</string>
+    <string name="home_detail_label_instruction">This is Home Detail Screen</string>
+
+    <!-- Common -->
+    <string name="common_money">Money</string>
+    <string name="common_money_required"><![CDATA[Money (<font color="#FF3B30">*</font>)]]></string>
+    <string name="common_percent">Percent</string>
+    <string name="common_date">Date</string>
+    <string name="common_restart_app">Restart application</string>
+    <string name="common_other">Other</string>
+    <string name="common_archived">Archived</string>
+    <string name="common_agree">Agree</string>
+    <string name="common_open_gallery">Open gallery</string>
+    <string name="common_choose_camera">Choose from camera</string>
+    <string name="common_upload_images">Upload images</string>
+    <string name="common_ok">OK</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_logout">Logout</string>
+
+    <!-- Error -->
+    <string name="error_message_no_permission">You do not have permission</string>
+    <string name="error_message_no_internet_connection">Please check your internet connection and try again</string>
+    <string name="error_message_require_permission">Please grant permission for continue using app</string>
+    <string name="error_message_facebook_login">Login by facebook account failed</string>
+    <string name="error_message_google_login">Login by google account failed</string>
+    <string name="error_message_invalid_username">Invalid username</string>
+    <string name="error_message_invalid_password">Invalid password</string>
+
 </resources>

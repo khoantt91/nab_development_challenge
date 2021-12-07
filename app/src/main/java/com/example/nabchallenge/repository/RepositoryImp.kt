@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 /***
  *   Repository has responsibility for executing logic of data source.
- *   Such as: get from server, save to local or get from local etc.....
+ *   For example: get data from server, save data to local or get data from local etc.....
  */
 class RepositoryImp @Inject constructor(private val context: Context) : Repository {
 
