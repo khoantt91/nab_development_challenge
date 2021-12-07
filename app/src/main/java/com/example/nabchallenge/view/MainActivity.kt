@@ -1,7 +1,8 @@
-package com.example.nabchallenge
+package com.example.nabchallenge.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.nabchallenge.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
