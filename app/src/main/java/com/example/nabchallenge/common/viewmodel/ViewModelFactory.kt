@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.nabchallenge.repository.Repository
 import com.example.nabchallenge.view.MainViewModel
+import com.example.nabchallenge.view.onboarding.forgot.ForgotPasswordViewModel
+import com.example.nabchallenge.view.onboarding.login.LoginViewModel
+import com.example.nabchallenge.view.onboarding.splash.SplashViewModel
 
 /***
  * Created by Khoa Nguyen on 01/11/2021.
@@ -17,15 +20,15 @@ class ViewModelFactory constructor(val repository: Repository) : ViewModelProvid
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(this.repository) as T
             }
-//            modelClass.isAssignableFrom(SplashViewModel::class.java) -> {
-//                SplashViewModel(this.repository) as T
-//            }
-//            modelClass.isAssignableFrom(ForgotPasswordViewModel::class.java) -> {
-//                ForgotPasswordViewModel(this.repository) as T
-//            }
-//            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
-//                LoginViewModel(this.repository) as T
-//            }
+            modelClass.isAssignableFrom(SplashViewModel::class.java) -> {
+                SplashViewModel(this.repository) as T
+            }
+            modelClass.isAssignableFrom(ForgotPasswordViewModel::class.java) -> {
+                ForgotPasswordViewModel(this.repository) as T
+            }
+            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+                LoginViewModel(this.repository) as T
+            }
 //            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
 //                HomeViewModel(this.repository) as T
 //            }

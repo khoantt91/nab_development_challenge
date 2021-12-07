@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <action
+        android:id="@+id/action_global_to_splashFragment"
+        app:destination="@id/splashFragment"
+        app:popUpTo="@id/onboard_nav_graph"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_homeDetailFragment"
+            app:destination="@id/homeDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeDetailFragment"
+        android:label="HomeDetailFragment"
+        tools:layout="@layout/fragment_home_detail">
+
+        <argument
+            android:name="districtId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+
+        <argument
+            android:name="districtName"
+            android:defaultValue=""
+            app:argType="string" />
+
+    </fragment>
+
+</navigation>

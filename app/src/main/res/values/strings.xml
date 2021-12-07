@@ -11,7 +11,7 @@
 
         P/s: don't be afraid of repeating a value for two or more keys. Languages are complex, so namespaces are necessary to bring context and break ambiguity. -->
 
-    <string name="app_name">TemplateAndroidSource</string>
+    <string name="app_name">Nab Challenge</string>
 
     <!-- Splash Screen -->
     <string name="splash_title">Splash</string>
