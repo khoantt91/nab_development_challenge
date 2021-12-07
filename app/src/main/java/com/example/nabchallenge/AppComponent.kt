@@ -11,7 +11,7 @@ interface AppComponent {
 
     fun inject(repository: RepositoryImp)
 
-    /* Expose repository */
+    // Expose repository
     fun repository(): Repository
 
 }

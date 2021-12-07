@@ -1,11 +1,14 @@
 package com.example.nabchallenge.repository.network.core
 
+import com.example.nabchallenge.common.gson.adapter.WeatherInfoDeserializer
+import com.example.nabchallenge.model.WeatherInfo
 import com.example.nabchallenge.repository.network.constant.HttpStatusCode
 import com.example.nabchallenge.repository.network.model.CloudResponse
 import com.example.nabchallenge.repository.network.model.Method
 import com.example.nabchallenge.repository.network.model.NetworkDataSource
 import com.example.nabchallenge.repository.network.model.NetworkDataSourceError
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,14 +21,15 @@ import org.json.JSONObject
 import retrofit2.Response
 import kotlin.coroutines.CoroutineContext
 
-@Suppress("unused")
 class NetworkCore(val networkService: NetworkService) : CoroutineScope {
 
     //region Variables
     private val job = Job()
     override val coroutineContext: CoroutineContext = job + Dispatchers.IO
 
-    var gson = Gson()
+    var gson: Gson = GsonBuilder().apply {
+        registerTypeAdapter(WeatherInfo::class.java, WeatherInfoDeserializer())
+    }.create()
     //endregion
 
     suspend inline fun <reified T> makeCall(endpoint: String, method: Method, params: HashMap<String, Any>? = null): NetworkDataSource<T> {
@@ -43,23 +47,22 @@ class NetworkCore(val networkService: NetworkService) : CoroutineScope {
     }
 
     /***
-     *   Base on business logic of server, format of successful data or error data, etc... Will define the way to handle response here.
-     *   Example current server using http status code 200 for both of successful data & error data.
+     *   Base on format response from server
+     *   Define the way to handle success or error response data.
      */
     inline fun <reified T> executeResponse(response: Response<ResponseBody>): NetworkDataSource<T> {
-        /* STEP 1: HANDLE ERROR */
-        /* HTTP STATUS ERROR */
+        // Error
         val httpStatusCode = HttpStatusCode.makeFromCode(response.raw().code)
-        if (httpStatusCode != HttpStatusCode.SUCCESS) return NetworkDataSource(error = NetworkDataSourceError(response.raw().code, response.raw().message))
+        if (httpStatusCode != HttpStatusCode.SUCCESS) {
+            val errorResponse = gson.fromJson(response.errorBody()?.string(), CloudResponse::class.java)
+            return NetworkDataSource(error = NetworkDataSourceError(errorResponse.code?.toIntOrNull() ?: HttpStatusCode.UNKNOWN.code, errorResponse.message.toString()))
+        }
 
-        /* SERVER BUSINESS LOGIC ERROR */
-        val cloudResponse = gson.fromJson(response.body()?.string(), CloudResponse::class.java)
-        if (cloudResponse.code != HttpStatusCode.SUCCESS.code)
-            return NetworkDataSource(error = NetworkDataSourceError(cloudResponse.code ?: HttpStatusCode.UNKNOWN.code, cloudResponse.message.toString()))
-
-
-        /* STEP 2: HANDLE SUCCESS */
-        return NetworkDataSource(gson.fromJson(cloudResponse.data, object : TypeToken<T>() {}.type))
+        // Success: handle 2 case list object or single object
+        val successResponse = gson.fromJson(response.body()?.string(), CloudResponse::class.java)
+        if (successResponse.list != null) return NetworkDataSource(gson.fromJson(successResponse?.list, object : TypeToken<T>() {}.type))
+        if (successResponse.single != null) return NetworkDataSource(gson.fromJson(successResponse?.single, object : TypeToken<T>() {}.type))
+        return NetworkDataSource(null)
     }
 }
 

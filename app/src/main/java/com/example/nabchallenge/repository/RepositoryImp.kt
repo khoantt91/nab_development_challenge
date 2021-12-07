@@ -2,12 +2,11 @@ package com.example.nabchallenge.repository
 
 import android.content.Context
 import com.example.nabchallenge.App
-import com.example.nabchallenge.model.District
+import com.example.nabchallenge.model.WeatherInfo
 import com.example.nabchallenge.repository.datastore.core.PreferenceDataStore
 import com.example.nabchallenge.repository.model.RepositoryDataSource
 import com.example.nabchallenge.repository.model.toRepositoryData
-import com.example.nabchallenge.repository.network.service.DistrictService
-import com.example.nabchallenge.repository.local.service.DistrictLocalService
+import com.example.nabchallenge.repository.network.service.WeatherService
 import javax.inject.Inject
 
 /***
@@ -17,7 +16,7 @@ import javax.inject.Inject
 class RepositoryImp @Inject constructor(private val context: Context) : Repository {
 
     @Inject
-    lateinit var districtService: DistrictService
+    lateinit var weatherService: WeatherService
 
     @Inject
     lateinit var preferenceDataStore: PreferenceDataStore
@@ -26,10 +25,8 @@ class RepositoryImp @Inject constructor(private val context: Context) : Reposito
         (context as App).appComponent.inject(this)
     }
 
-    override suspend fun getDistrict(): RepositoryDataSource<List<District>> {
-        val result = districtService.getDistrictList()
-        if (result.error != null) return result.toRepositoryData()
-        return result.toRepositoryData()
+    override suspend fun getWeatherInfoList(cityName: String, limit: Int): RepositoryDataSource<List<WeatherInfo>> {
+        return weatherService.getWeatherInfoList(cityName, limit).toRepositoryData()
     }
 
     override suspend fun getCurrentToken(): RepositoryDataSource<String> = preferenceDataStore.getToken().toRepositoryData()

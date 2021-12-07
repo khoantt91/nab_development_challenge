@@ -5,9 +5,9 @@ package com.example.nabchallenge.repository.network.dj
 import com.example.nabchallenge.repository.network.constant.NetworkConstant
 import com.example.nabchallenge.repository.network.core.NetworkCore
 import com.example.nabchallenge.repository.network.core.NetworkService
+import com.example.nabchallenge.repository.network.service.WeatherService
+import com.example.nabchallenge.repository.network.service.WeatherServiceImp
 import com.example.nabchallenge.utils.log.wLog
-import com.example.nabchallenge.repository.network.service.DistrictService
-import com.example.nabchallenge.repository.network.service.DistrictServiceImp
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -60,6 +60,6 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideDistrictService(networkCore: NetworkCore): DistrictService = DistrictServiceImp(networkCore)
+    fun provideWeatherService(networkCore: NetworkCore): WeatherService = WeatherServiceImp(networkCore)
 
 }

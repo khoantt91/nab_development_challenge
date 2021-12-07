@@ -4,7 +4,6 @@ import android.content.Context
 import com.example.nabchallenge.repository.RepositoryImp
 import com.example.nabchallenge.repository.datastore.dj.DataStoreModule
 import com.example.nabchallenge.repository.network.dj.NetworkModule
-import com.example.nabchallenge.repository.network.service.DistrictService
 import com.example.nabchallenge.repository.Repository
 import dagger.Module
 import dagger.Provides
@@ -19,7 +18,7 @@ class AppModule(private val app: App) {
 
     @Singleton
     @Provides
-    fun provideRepository(districtService: DistrictService): Repository {
+    fun provideRepository(): Repository {
         return RepositoryImp(app)
     }
 }

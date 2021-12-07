@@ -7,10 +7,10 @@ package com.example.nabchallenge.model
  */
 
 data class WeatherInfo(
-    val createdTime: Long,
-    val minTemp: Long,
-    val maxTemp: Long,
-    val pressure: Int,
-    val humidity: Int,
-    val description: String
+    val minTemp: Long?,
+    val maxTemp: Long?,
+    val pressure: Int?,
+    val humidity: Int?,
+    val description: String?,
+    val createdTime: Long?
 )

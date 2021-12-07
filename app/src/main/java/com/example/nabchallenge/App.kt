@@ -10,9 +10,14 @@
 package com.example.nabchallenge
 
 import android.app.Application
+import com.example.nabchallenge.repository.Repository
+import javax.inject.Inject
 
 class App : Application() {
 
     val appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
+
+    @Inject
+    lateinit var repository: Repository
 
 }
