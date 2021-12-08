@@ -33,9 +33,6 @@ class LoginViewModel constructor(val repository: Repository) : BaseViewModel(rep
         //Login successfully
         viewModelScope.launch {
             val result = repository.login(userName, password)
-
-            // TODO handle error
-
             result.success?.let { completed.postValue(true) }
         }
 

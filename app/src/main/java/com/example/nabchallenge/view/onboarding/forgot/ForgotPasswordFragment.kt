@@ -14,11 +14,11 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
     private val viewModel: ForgotPasswordViewModel by viewModels { viewModelFactory }
     //endregion
 
-    override fun provideBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentForgotPasswordBinding? = FragmentForgotPasswordBinding.inflate(inflater, container, false)
+    override fun provideBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentForgotPasswordBinding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
 
     //region Init View
     override fun setupView() {
-        /* Register Event Handler */
+        // Register event listener
         binding?.btnForgot?.onDebounceClick {
             handleForgotPasswordEvent()
         }

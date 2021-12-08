@@ -19,7 +19,7 @@ object DbLog {
     fun writeLog(type: String, obj: Any) {
         if (!isDebug) return
 
-        /* Get info of log line */
+       // Get info of log line
         val pair = getMethodNames(Throwable().stackTrace)
         val className = pair.first
         val methodName = pair.second

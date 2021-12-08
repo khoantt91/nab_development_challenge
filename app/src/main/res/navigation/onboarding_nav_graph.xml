@@ -5,13 +5,14 @@
     android:id="@+id/onboard_nav_graph"
     app:startDestination="@id/splashFragment">
 
-    <include app:graph="@navigation/home_nav_graph" />
+    <include app:graph="@navigation/dashboard_nav_graph" />
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.nabchallenge.view.onboarding.splash.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
+
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -21,8 +22,8 @@
             app:popUpToInclusive="true" />
 
         <action
-            android:id="@+id/action_splashFragment_to_home_nav_graph"
-            app:destination="@id/home_nav_graph"
+            android:id="@+id/action_splashFragment_to_dashboard_nav_graph"
+            app:destination="@id/dashboard_nav_graph"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/splashFragment"
@@ -35,6 +36,7 @@
         android:name="com.example.nabchallenge.view.onboarding.login.LoginFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_login">
+
         <action
             android:id="@+id/action_loginFragment_to_forgotFragment"
             app:destination="@id/forgotFragment"
@@ -42,8 +44,8 @@
             app:exitAnim="@android:anim/slide_out_right" />
 
         <action
-            android:id="@+id/action_loginFragment_to_home_nav_graph"
-            app:destination="@id/home_nav_graph"
+            android:id="@+id/action_loginFragment_to_dashboard_nav_graph"
+            app:destination="@id/dashboard_nav_graph"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/loginFragment"
@@ -55,6 +57,7 @@
         android:name="com.example.nabchallenge.view.onboarding.forgot.ForgotPasswordFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_forgot_password">
+
         <action
             android:id="@+id/action_forgotFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -62,6 +65,7 @@
             app:exitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+
     </fragment>
 
 </navigation>

@@ -1,7 +1,10 @@
 package com.example.nabchallenge.common.activity
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -53,6 +56,12 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
             setNegativeButton(titleCancelButton) { _, _ -> onCanceled?.invoke() }
         }
         dialog.show()
+    }
+
+    fun hideKeyboard() {
+        val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager ?: return
+        val currentViewFocus = currentFocus ?: View(this)
+        imm.hideSoftInputFromWindow(currentViewFocus.windowToken, 0)
     }
     //endregion
 

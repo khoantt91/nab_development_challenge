@@ -13,11 +13,11 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     private val viewModel: SplashViewModel by viewModels { viewModelFactory }
     //endregion
 
-    override fun provideBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSplashBinding? = FragmentSplashBinding.inflate(inflater, container, false)
+    override fun provideBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSplashBinding = FragmentSplashBinding.inflate(inflater, container, false)
 
     //region Init View
     override fun setupView() {
-        /* Register Event Handler */
+        // Register event listener
         handleLoadPrepareDataEvent()
     }
     //endregion
@@ -28,7 +28,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     //region Event Listener
     private fun handleLoadPrepareDataEvent() = viewModel.loadPrepareData().observe(this) { loggedFlag ->
-        if (loggedFlag) findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeNavGraph())
+        if (loggedFlag) findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToDashboardNavGraph())
         else findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
     }
     //endregion

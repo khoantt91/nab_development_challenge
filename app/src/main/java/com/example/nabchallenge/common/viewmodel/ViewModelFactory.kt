@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.nabchallenge.repository.Repository
 import com.example.nabchallenge.view.MainViewModel
+import com.example.nabchallenge.view.dashboard.DashboardViewModel
 import com.example.nabchallenge.view.onboarding.forgot.ForgotPasswordViewModel
 import com.example.nabchallenge.view.onboarding.login.LoginViewModel
 import com.example.nabchallenge.view.onboarding.splash.SplashViewModel
@@ -29,9 +30,9 @@ class ViewModelFactory constructor(val repository: Repository) : ViewModelProvid
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(this.repository) as T
             }
-//            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-//                HomeViewModel(this.repository) as T
-//            }
+            modelClass.isAssignableFrom(DashboardViewModel::class.java) -> {
+                DashboardViewModel(this.repository) as T
+            }
             else -> {
                 throw IllegalArgumentException("ViewModel isn't defined")
             }

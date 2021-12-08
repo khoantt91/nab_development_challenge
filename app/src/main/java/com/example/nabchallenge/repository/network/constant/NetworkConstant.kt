@@ -8,7 +8,7 @@ object NetworkConstant {
     fun getNetworkUrl(): String = NETWORK_DEBUG_URL
 
     // Endpoint
-    val FORECAST_ENDPOINT = "forecast/daily?appid=60c6fbeb4b93ac653c492ba806fc346d"
+    val FORECAST_ENDPOINT = "forecast/daily?appid=60c6fbeb4b93ac653c492ba806fc346d&units=metric"
 
     val TIME_OUT = 60000L
 

@@ -20,20 +20,20 @@
     <!-- Login Screen -->
     <string name="login_title">Login</string>
     <string name="login_label_welcome">Welcome to App</string>
-    <string name="login_label_instruction">This is Login Screen</string>
+    <string name="login_label_instruction">Login Screen</string>
     <string name="login_label_forgot_password">You forgot password?</string>
 
     <!-- Forgot Password Screen -->
     <string name="forgot_password_title">Forgot Password</string>
-    <string name="forgot_password_instruction">This is Forgot Password Screen</string>
+    <string name="forgot_password_instruction">Forgot Password Screen</string>
 
-    <!-- Home Screen -->
-    <string name="home_title">Home</string>
-    <string name="home_label_instruction">This is Home Screen</string>
-
-    <!-- Home Detail Screen -->
-    <string name="home_detail_title">Home Detail</string>
-    <string name="home_detail_label_instruction">This is Home Detail Screen</string>
+    <!-- Dashboard Screen -->
+    <string name="dashboard_weather_title">Weather Forecast</string>
+    <string name="dashboard_weather_date_with_data">Date: %1$s</string>
+    <string name="dashboard_weather_average_temperature_with_data">Average Temperature: %1$s\u2103</string>
+    <string name="dashboard_weather_pressure_with_data">Pressure: %1$s</string>
+    <string name="dashboard_weather_humidity_with_data">Humidity: %1$s\%%</string>
+    <string name="dashboard_weather_description_with_data">Description: %1$s</string>
 
     <!-- Common -->
     <string name="common_money">Money</string>
@@ -59,5 +59,6 @@
     <string name="error_message_google_login">Login by google account failed</string>
     <string name="error_message_invalid_username">Invalid username</string>
     <string name="error_message_invalid_password">Invalid password</string>
+    <string name="error_message_type_at_least_three_character">Please type at least 3 character</string>
 
 </resources>

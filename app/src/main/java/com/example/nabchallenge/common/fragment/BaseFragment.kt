@@ -50,6 +50,8 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         titleConfirmButton: String = getString(R.string.common_ok), titleCancelButton: String = getString(R.string.common_cancel),
         onConfirmed: (() -> Unit)? = null, onCanceled: (() -> Unit)? = null
     ) = (activity as? BaseActivity<*>)?.showDialog(title, message, titleConfirmButton, titleCancelButton, onConfirmed, onCanceled)
+
+    fun hideKeyboard() = (activity as? BaseActivity<*>)?.hideKeyboard()
     //endregion
 
     //region Event Listener

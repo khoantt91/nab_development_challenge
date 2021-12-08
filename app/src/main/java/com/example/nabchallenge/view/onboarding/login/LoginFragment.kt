@@ -16,15 +16,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     private val viewModel: LoginViewModel by viewModels { viewModelFactory }
     //endregion
 
-    override fun provideBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentLoginBinding? = FragmentLoginBinding.inflate(inflater, container, false)
+    override fun provideBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false)
 
     //region Init View
     override fun setupView() {
 
-        /* Register Observer */
+        // Register observer
         observerError()
 
-        /* Register Event Handler */
+        // Register event listener
         binding?.tvForgotPassword?.onDebounceClick {
             handleForgotPasswordEvent()
         }
@@ -51,7 +51,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun handleLoginEvent(userName: String?, password: String?) = viewModel.login(userName, password).observe(this) { success ->
-        if (success) findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeNavGraph())
+        if (success) findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToDashboardNavGraph())
     }
     //endregion
 
