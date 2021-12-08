@@ -2,9 +2,11 @@
 
 package com.example.nabchallenge.repository.network.dj
 
+import android.content.Context
 import com.example.nabchallenge.repository.network.constant.NetworkConstant
 import com.example.nabchallenge.repository.network.core.NetworkCore
 import com.example.nabchallenge.repository.network.core.NetworkService
+import com.example.nabchallenge.repository.network.core.interceptor.NetworkConnectionInterceptor
 import com.example.nabchallenge.repository.network.service.WeatherService
 import com.example.nabchallenge.repository.network.service.WeatherServiceImp
 import com.example.nabchallenge.utils.log.wLog
@@ -29,11 +31,19 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient = OkHttpClient().newBuilder().apply {
+    fun provideNetworkConnectionInterceptor(context: Context): NetworkConnectionInterceptor = NetworkConnectionInterceptor(context)
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        networkConnectionInterceptor: NetworkConnectionInterceptor
+    ): OkHttpClient = OkHttpClient().newBuilder().apply {
         // Config OkHttp
         readTimeout(NetworkConstant.TIME_OUT, TimeUnit.MILLISECONDS)
         writeTimeout(NetworkConstant.TIME_OUT, TimeUnit.MILLISECONDS)
         addInterceptor(httpLoggingInterceptor)
+        addInterceptor(networkConnectionInterceptor)
     }.build()
 
     @Singleton

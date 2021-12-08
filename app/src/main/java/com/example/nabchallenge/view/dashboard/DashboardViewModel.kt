@@ -29,7 +29,7 @@ class DashboardViewModel constructor(private val repository: Repository) : BaseV
     //endregion
 
     fun searchWeatherInfo(key: String) = viewModelScope.launch {
-        if (key == keySearch || key.isEmpty() || loadingProgressLiveData.value == true) return@launch
+        if (key.isEmpty() || loadingProgressLiveData.value == true) return@launch
         loadingProgressLiveData.postValue(true)
         keySearch = key
 

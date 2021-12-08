@@ -20,7 +20,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(), WeatherInfoR
     private val weatherInfoAdapter: WeatherInfoRecyclerAdapter by lazy { WeatherInfoRecyclerAdapter(this) }
     //endregion
 
-    override fun provideBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentDashboardBinding? = FragmentDashboardBinding.inflate(inflater, container, false)
+    override fun provideBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentDashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false)
 
     //region Init View
     override fun setupView() {
