@@ -10,12 +10,12 @@ import com.example.nabchallenge.utils.round
  */
 
 data class WeatherInfo(
-    val minTemp: Long?,
-    val maxTemp: Long?,
-    val pressure: Int?,
-    val humidity: Int?,
-    val description: String?,
-    val createdTime: Long?                      // It's second unit not millisecond unit
+    val minTemp: Long? = null,
+    val maxTemp: Long? = null,
+    val pressure: Int? = null,
+    val humidity: Int? = null,
+    val description: String? = null,
+    val createdTime: Long? = null                      // It's second unit not millisecond unit
 ) {
 
     fun getAverageTemp(): Int? {

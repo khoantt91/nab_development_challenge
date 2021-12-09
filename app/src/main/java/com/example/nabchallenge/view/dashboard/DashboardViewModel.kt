@@ -6,7 +6,6 @@ import com.example.nabchallenge.common.viewmodel.BaseViewModel
 import com.example.nabchallenge.model.AppError
 import com.example.nabchallenge.model.WeatherInfo
 import com.example.nabchallenge.repository.Repository
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 
@@ -20,7 +19,7 @@ class DashboardViewModel constructor(private val repository: Repository) : BaseV
 
     //region Variables
     @Volatile
-    var loadingProgressLiveData = MutableLiveData<Boolean>(false)
+    var loadingProgressLiveData = MutableLiveData(false)
     var weatherListLiveData = MutableLiveData<List<WeatherInfo>>()
     var errorLiveData = MutableLiveData<AppError>()
 
