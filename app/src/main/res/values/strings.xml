@@ -34,6 +34,8 @@
     <string name="dashboard_weather_pressure_with_data">Pressure: %1$s</string>
     <string name="dashboard_weather_humidity_with_data">Humidity: %1$s\%%</string>
     <string name="dashboard_weather_description_with_data">Description: %1$s</string>
+    <string name="dashboard_weather_type_city_name">Type city name</string>
+    <string name="dashboard_weather_get_weather">Get weather</string>
 
     <!-- Common -->
     <string name="common_money">Money</string>

@@ -28,7 +28,7 @@ class DashboardViewModel constructor(private val repository: Repository) : BaseV
     fun searchWeatherInfo(key: String) = viewModelScope.launch {
         val dashboardState = getWeatherStateLive.value ?: return@launch
         if (key.isEmpty() || dashboardState.isLoading) return@launch
-        getWeatherStateLive.postValue(dashboardState.copy(isLoading = true))
+        getWeatherStateLive.postValue(dashboardState.copy(isLoading = true, error = null))
         keySearch = key
 
         val result = repository.getWeatherInfoList(keySearch, limit)
@@ -40,7 +40,7 @@ class DashboardViewModel constructor(private val repository: Repository) : BaseV
 
         result.success?.let { weatherList ->
             ensureActive()
-            getWeatherStateLive.postValue(dashboardState.copy(isLoading = false, weatherList, null))
+            getWeatherStateLive.postValue(dashboardState.copy(isLoading = false, weatherList = weatherList, error = null))
         }
     }
 
