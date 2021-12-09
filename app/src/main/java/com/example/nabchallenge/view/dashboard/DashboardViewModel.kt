@@ -19,7 +19,7 @@ class DashboardViewModel constructor(private val repository: Repository) : BaseV
 
     //region Variables
     @Volatile
-    var getWeatherStateLive = MutableLiveData<GetWeatherState>(GetWeatherState())
+    var getWeatherStateLive = MutableLiveData(GetWeatherState())
 
     private var keySearch: String = ""
     private val limit = 17
