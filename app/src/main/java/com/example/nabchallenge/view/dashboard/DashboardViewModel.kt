@@ -3,9 +3,9 @@ package com.example.nabchallenge.view.dashboard
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.nabchallenge.common.viewmodel.BaseViewModel
-import com.example.nabchallenge.model.AppError
 import com.example.nabchallenge.model.WeatherInfo
 import com.example.nabchallenge.repository.Repository
+import com.example.nabchallenge.view.dashboard.state.GetWeatherState
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 
@@ -19,34 +19,29 @@ class DashboardViewModel constructor(private val repository: Repository) : BaseV
 
     //region Variables
     @Volatile
-    var loadingProgressLiveData = MutableLiveData(false)
-    var weatherListLiveData = MutableLiveData<List<WeatherInfo>>()
-    var errorLiveData = MutableLiveData<AppError>()
+    var getWeatherStateLive = MutableLiveData<GetWeatherState>(GetWeatherState())
 
     private var keySearch: String = ""
     private val limit = 17
     //endregion
 
     fun searchWeatherInfo(key: String) = viewModelScope.launch {
-        if (key.isEmpty() || loadingProgressLiveData.value == true) return@launch
-        loadingProgressLiveData.postValue(true)
+        val dashboardState = getWeatherStateLive.value ?: return@launch
+        if (key.isEmpty() || dashboardState.isLoading) return@launch
+        getWeatherStateLive.postValue(dashboardState.copy(isLoading = true))
         keySearch = key
 
         val result = repository.getWeatherInfoList(keySearch, limit)
 
         result.error?.let { error ->
             ensureActive()
-            errorLiveData.postValue(error)
-
-            weatherListLiveData.postValue(emptyList())
+            getWeatherStateLive.postValue(dashboardState.copy(isLoading = false, weatherList = emptyList(), error = error))
         }
 
         result.success?.let { weatherList ->
             ensureActive()
-            weatherListLiveData.postValue(weatherList)
+            getWeatherStateLive.postValue(dashboardState.copy(isLoading = false, weatherList, null))
         }
-
-        loadingProgressLiveData.postValue(false)
     }
 
     fun clickWeatherInfo(weatherInfo: WeatherInfo) {

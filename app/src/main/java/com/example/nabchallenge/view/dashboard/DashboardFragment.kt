@@ -42,32 +42,27 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(), WeatherInfoR
         binding?.btnGetWeather?.onDebounceClick { handleSearchWeatherEvent(binding?.edtSearchKey?.text.toString()) }
 
         // Register observer
-        observerLoading()
-
-        observerError()
-
-        observerWeatherList()
+        observerGetWeatherStateLive()
     }
     //endregion
 
     //region Update UI
-    private fun observerError() {
-        viewModel.errorLiveData.observe(this, {
-            if (it != null) showToast(it.message.toString())
-        })
-    }
 
-    private fun observerLoading() {
-        viewModel.loadingProgressLiveData.observe(this, {
-            if (it) binding?.progressIndicator?.show()
-            else binding?.progressIndicator?.hide()
-        })
-    }
+    private fun observerGetWeatherStateLive() {
+        viewModel.getWeatherStateLive.observe(this) { weatherState ->
 
-    private fun observerWeatherList() {
-        viewModel.weatherListLiveData.observe(this, { weatherList ->
-            weatherInfoAdapter.notifyChangedDiffUtil(weatherList)
-        })
+            // Show hide loading
+            when (weatherState.isLoading) {
+                true -> binding?.progressIndicator?.show()
+                else -> binding?.progressIndicator?.hide()
+            }
+
+            // Show error
+            weatherState.error?.let { showToast(it.message.toString()) }
+
+            // Update adapter
+            weatherState.weatherList?.let { weatherInfoAdapter.notifyChangedDiffUtil(it) }
+        }
     }
     //endregion
 
