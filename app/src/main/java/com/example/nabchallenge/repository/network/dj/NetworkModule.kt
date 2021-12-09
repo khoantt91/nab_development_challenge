@@ -10,6 +10,7 @@ import com.example.nabchallenge.repository.network.core.interceptor.NetworkConne
 import com.example.nabchallenge.repository.network.service.WeatherService
 import com.example.nabchallenge.repository.network.service.WeatherServiceImp
 import com.example.nabchallenge.utils.log.wLog
+import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -36,12 +37,14 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(
+        context: Context,
         httpLoggingInterceptor: HttpLoggingInterceptor,
         networkConnectionInterceptor: NetworkConnectionInterceptor
     ): OkHttpClient = OkHttpClient().newBuilder().apply {
         // Config OkHttp
         readTimeout(NetworkConstant.TIME_OUT, TimeUnit.MILLISECONDS)
         writeTimeout(NetworkConstant.TIME_OUT, TimeUnit.MILLISECONDS)
+        addInterceptor(ChuckInterceptor(context))
         addInterceptor(httpLoggingInterceptor)
         addInterceptor(networkConnectionInterceptor)
     }.build()

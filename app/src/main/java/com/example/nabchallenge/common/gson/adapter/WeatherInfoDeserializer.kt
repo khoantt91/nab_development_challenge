@@ -23,6 +23,7 @@ class WeatherInfoDeserializer : JsonDeserializer<WeatherInfo> {
             weatherJson?.get("pressure")?.asInt,
             weatherJson?.get("humidity")?.asInt,
             description,
+            weatherJson?.get("city")?.asJsonObject?.get("name")?.asString,
             weatherJson?.get("dt")?.asLong
         )
     }

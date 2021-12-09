@@ -49,12 +49,25 @@ class DashboardViewModelTest {
     }
 
     @Test
+    fun testLoadingStateWhenEmptyKeySearch() {
+        testScope.runTest {
+            val expectedResult = listOf(false)
+            given(repository.getWeatherInfoList(anyString(), anyInt())).willReturn(RepositoryDataSource(emptyList(), null))
+            dashboardViewModel.getWeatherStateLive.captureValues {
+                dashboardViewModel.searchWeatherInfo("")
+                val actualResult = this.values.map { it?.isLoading }
+                assertThat(actualResult).isEqualTo(expectedResult)
+            }
+        }
+    }
+
+    @Test
     fun testLoadingStateWhenGetSuccess() {
         testScope.runTest {
             val expectedResult = listOf(false, true, false)
             given(repository.getWeatherInfoList(anyString(), anyInt())).willReturn(RepositoryDataSource(emptyList(), null))
             dashboardViewModel.getWeatherStateLive.captureValues {
-                dashboardViewModel.searchWeatherInfo("saigon")
+                dashboardViewModel.searchWeatherInfo("ho chi minh")
                 val actualResult = this.values.map { it?.isLoading }
                 assertThat(actualResult).isEqualTo(expectedResult)
             }
@@ -67,7 +80,7 @@ class DashboardViewModelTest {
             val expectedResult = listOf(false, true, false)
             given(repository.getWeatherInfoList(anyString(), anyInt())).willReturn(RepositoryDataSource(null, RepositoryDataSourceError(100, "Error happened")))
             dashboardViewModel.getWeatherStateLive.captureValues {
-                dashboardViewModel.searchWeatherInfo("saigon")
+                dashboardViewModel.searchWeatherInfo("ho chi minh")
                 val actualResult = this.values.map { it?.isLoading }
                 assertThat(actualResult).isEqualTo(expectedResult)
             }
@@ -79,7 +92,7 @@ class DashboardViewModelTest {
         testScope.runTest {
             given(repository.getWeatherInfoList(anyString(), anyInt())).willReturn(RepositoryDataSource(listOf(WeatherInfo()), null))
             dashboardViewModel.getWeatherStateLive.captureValues {
-                dashboardViewModel.searchWeatherInfo("saigon")
+                dashboardViewModel.searchWeatherInfo("ho chi minh")
                 val actualResult = this.values.last()?.weatherList
                 assertThat(actualResult).isNotNull()
                 assertThat(actualResult).isNotEmpty()
@@ -93,7 +106,7 @@ class DashboardViewModelTest {
             val expectResult = RepositoryDataSourceError(100, "Error happened")
             given(repository.getWeatherInfoList(anyString(), anyInt())).willReturn(RepositoryDataSource(null, expectResult))
             dashboardViewModel.getWeatherStateLive.captureValues {
-                dashboardViewModel.searchWeatherInfo("saigon")
+                dashboardViewModel.searchWeatherInfo("ho chi minh")
                 val actualResult = this.values.last()?.error
                 assertThat(actualResult).isNotNull()
                 assertThat(actualResult?.code == expectResult.code).isTrue()

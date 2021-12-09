@@ -15,6 +15,7 @@ data class WeatherInfo(
     val pressure: Int? = null,
     val humidity: Int? = null,
     val description: String? = null,
+    val cityName: String? = null,
     val createdTime: Long? = null                      // It's second unit not millisecond unit
 ) {
 
