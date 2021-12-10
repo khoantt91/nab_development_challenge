@@ -18,13 +18,14 @@ class WeatherInfoDeserializer : JsonDeserializer<WeatherInfo> {
         val temperatureJson = weatherJson?.get("temp")?.asJsonObject
         val description = weatherJson?.get("weather")?.asJsonArray?.joinToString { it?.asJsonObject?.get("description")?.asString.toString() }
         return WeatherInfo(
+            null,
             temperatureJson?.get("min")?.asLong,
             temperatureJson?.get("max")?.asLong,
             weatherJson?.get("pressure")?.asInt,
             weatherJson?.get("humidity")?.asInt,
             description,
             weatherJson?.get("city")?.asJsonObject?.get("name")?.asString,
-            weatherJson?.get("dt")?.asLong
+            weatherJson?.get("dt")?.asLong?.let { it * 1000 }               // Convert second to millisecond
         )
     }
 }

@@ -1,5 +1,8 @@
 package com.example.nabchallenge.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.nabchallenge.utils.ifNotNull
 import com.example.nabchallenge.utils.round
 
@@ -9,13 +12,16 @@ import com.example.nabchallenge.utils.round
  * Email: khoantt91@gmail.com
  */
 
+@Entity
 data class WeatherInfo(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
     val minTemp: Long? = null,
     val maxTemp: Long? = null,
     val pressure: Int? = null,
     val humidity: Int? = null,
     val description: String? = null,
-    val cityName: String? = null,
+    var citySearchName: String? = null,
     val createdTime: Long? = null                      // It's second unit not millisecond unit
 ) {
 

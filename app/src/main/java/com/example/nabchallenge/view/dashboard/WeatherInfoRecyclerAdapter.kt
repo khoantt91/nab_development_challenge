@@ -29,7 +29,7 @@ class WeatherInfoRecyclerAdapter(private val listener: WeatherInfoRecyclerAdapte
     }
 
     override fun onBindView(item: WeatherInfo, position: Int, viewHolder: BaseViewHolder<ItemWeatherInfoBinding>) {
-        viewHolder.binding.tvDate.text = context.getString(R.string.dashboard_weather_date_with_data, item.createdTime?.let { (it * 1000).formatDateString() })
+        viewHolder.binding.tvDate.text = context.getString(R.string.dashboard_weather_date_with_data, item.createdTime?.let { (it).formatDateString() })
         viewHolder.binding.tvTemperature.text = context.getString(R.string.dashboard_weather_average_temperature_with_data, item.getAverageTemp()?.toString())
         viewHolder.binding.tvPressure.text = context.getString(R.string.dashboard_weather_pressure_with_data, item.pressure?.toString())
         viewHolder.binding.tvHumidity.text = context.getString(R.string.dashboard_weather_humidity_with_data, item.humidity?.toString())
@@ -43,7 +43,7 @@ class WeatherInfoRecyclerAdapter(private val listener: WeatherInfoRecyclerAdapte
             override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
                 val oldItem = oldList[oldItemPosition]
                 val newItem = newList[newItemPosition]
-                return oldItem == newItem
+                return oldItem.createdTime == newItem.createdTime
             }
 
             override fun getOldListSize(): Int = oldList.size
