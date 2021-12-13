@@ -13,15 +13,15 @@
 	* SharePreference: DataStore( Android JetPack)
 * For Security: I use android keystore to retrive master key. This key is used in DataStore and SqlCipher (security library for Room Database)
 
-![Alt text](https://github.com/khoantt91/android-template-source/blob/feature/mvvm_dagger_realm_couroutine_template/Structure.png)
+![Alt text](https://github.com/khoantt91/nab_development_challenge/blob/master/app_overview.png)
 
 ## App Folder Package Structure
 * "common" package: store common base class, such as: BaseActivity, BaseFragment, BaseViewModel, BaseRecyclerAdapter, ApplicationGlideModule and GsonTypeAdapter.
 * "model" package: all of application models
 * "repository" package: contain data business logic. There are 3 package in repository: datastore, local and network. Each package will have single reposibility for retriving or inserting data and data in repository will not be retrived directly but it will through a wapper class like RepositoryDataSource.
-	* datastore: has reposibility for data in SharePreference
-	* local: has reposibility for data in Local Database (SqlLite)
-	* network: has reposibility for data in Api Service
+	* datastore: has reposibility for data of SharePreference
+	* local: has reposibility for data of Local Database (SqlLite)
+	* network: has reposibility for data of Network Api Service
 * "utils" package: contain common helper class, helper methods or extension etc...
 * "view" package: contain all of feature view like activity, fragment or custom view in app etc...
 
