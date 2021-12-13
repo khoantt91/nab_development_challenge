@@ -2,11 +2,15 @@
 
 ## Structure
 
-* Single Activity with MVVM Design Pattern + Dagger 2 + Coroutine + Navigation (Android Jetpack)
-* Repository: 
-      - Network: Retrofit + Gson
-      - Local: Room Database
-      - SharePreference: DataStore
+* For Design Pattern: Single Activity + MVVM Design Pattern
+* For Dependance Injection: Dagger 2
+* For Concurrency Execution: Coroutine
+* For Navigation: Navigation (Android JetPack)
+* For Repository:
+	* Network: Retrofit + Gson
+	* Local: Room Database
+	* SharePreference: DataStore( Android JetPack)
+* For Security: I use android keystore to retrive master key. This key is used in DataStore and SqlCipher (security library for Room Database)
 
 ![Alt text](https://github.com/khoantt91/android-template-source/blob/feature/mvvm_dagger_realm_couroutine_template/Structure.png)
 
