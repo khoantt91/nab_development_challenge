@@ -10,6 +10,7 @@ object DataStoreConstant {
     /* Define Reference Key */
     object PreferenceKey {
         val TOKEN_KEY = stringPreferencesKey("Token")
+        val ROOM_KEY = stringPreferencesKey("RoomKey")
     }
 
 }

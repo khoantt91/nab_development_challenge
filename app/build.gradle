@@ -102,6 +102,8 @@ dependencies {
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+    implementation "net.zetetic:android-database-sqlcipher:4.5.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.1.0"
 
 
     /* Image Loading */

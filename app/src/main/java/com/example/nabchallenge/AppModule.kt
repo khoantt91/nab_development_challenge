@@ -13,7 +13,7 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [NetworkModule::class, DataStoreModule::class, LocalModule::class, ActivityModule::class, FragmentModule::class])
+@Module(includes = [DataStoreModule::class, NetworkModule::class, LocalModule::class, ActivityModule::class, FragmentModule::class])
 class AppModule(private val app: App) {
 
     @Singleton

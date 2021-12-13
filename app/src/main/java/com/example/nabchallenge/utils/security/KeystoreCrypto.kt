@@ -1,4 +1,3 @@
-
 package com.example.nabchallenge.utils.security
 
 import android.content.Context
@@ -6,7 +5,9 @@ import android.os.Build
 import android.security.KeyPairGeneratorSpec
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
+import com.example.nabchallenge.utils.hexStringToByteArray
 import com.example.nabchallenge.utils.log.eLog
+import com.example.nabchallenge.utils.toHex
 import java.math.BigInteger
 import java.nio.charset.Charset
 import java.security.KeyPairGenerator
@@ -57,6 +58,10 @@ class KeystoreCrypto constructor(val context: Context) {
     }
 
     fun encryptData(alias: String, data: String): String? {
+        return encryptData(alias, data.encodeToByteArray())
+    }
+
+    fun encryptData(alias: String, data: ByteArray): String? {
         try {
             val keyStore = KeyStore.getInstance(SECURITY_PROVIDER_ANDROID_KEY_STORE)
             keyStore.load(null)
@@ -75,7 +80,7 @@ class KeystoreCrypto constructor(val context: Context) {
 
             val spec = OAEPParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec.SHA1, PSource.PSpecified.DEFAULT)
             cipher.init(Cipher.ENCRYPT_MODE, publicKey, spec)
-            val encryptedByte = cipher.doFinal(data.encodeToByteArray())
+            val encryptedByte = cipher.doFinal(data)
             return encryptedByte.toHex()
         } catch (e: Exception) {
             eLog("ENCRYPTION ERROR: $e")
@@ -112,32 +117,3 @@ const val ALGORITHM_RSA = "RSA"
 const val TRANSFORMATION_ABOVE_M = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
 const val TRANSFORMATION_BELOW_M = "RSA/ECB/PKCS1Padding"
 const val SECURITY_PROVIDER_ANDROID_KEY_STORE = "AndroidKeyStore"
-
-// Hex converter extension
-fun String.hexStringToByteArray(): ByteArray {
-
-    val b = ByteArray(this.length / 2)
-    for (i in b.indices) {
-        val index = i * 2
-        val v = Integer.parseInt(this.substring(index, index + 2), 16)
-        b[i] = v.toByte()
-    }
-    return b
-}
-
-private const val HEX_STRING = "0123456789ABCDEF"
-private val HEX_CHARS_ARRAY = HEX_STRING.toCharArray()
-fun ByteArray.toHex(): String {
-    val result = StringBuffer()
-
-    forEach {
-        val octet = it.toInt()
-        val firstIndex = (octet and 0xF0).ushr(4)
-        val secondIndex = octet and 0x0F
-        result.append(HEX_CHARS_ARRAY[firstIndex])
-        result.append(HEX_CHARS_ARRAY[secondIndex])
-    }
-
-
-    return result.toString()
-}

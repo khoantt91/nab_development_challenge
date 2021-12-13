@@ -52,4 +52,29 @@ inline fun <A, B, C> ifNotNull(first: A?, second: B?, third: C?, block: (A, B, C
 
 fun <T : Any> isNull(vararg data: T?): Boolean = data.all { it == null }
 
-fun String.isValidEmail(): Boolean = !TextUtils.isEmpty(this) && Patterns.EMAIL_ADDRESS.matcher(this).matches();
+fun String.isValidEmail(): Boolean = !TextUtils.isEmpty(this) && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+// Hex converter extension
+fun String.hexStringToByteArray(): ByteArray {
+    val b = ByteArray(this.length / 2)
+    for (i in b.indices) {
+        val index = i * 2
+        val v = Integer.parseInt(this.substring(index, index + 2), 16)
+        b[i] = v.toByte()
+    }
+    return b
+}
+
+private const val HEX_STRING = "0123456789ABCDEF"
+private val HEX_CHARS_ARRAY = HEX_STRING.toCharArray()
+fun ByteArray.toHex(): String {
+    val result = StringBuffer()
+    forEach {
+        val octet = it.toInt()
+        val firstIndex = (octet and 0xF0).ushr(4)
+        val secondIndex = octet and 0x0F
+        result.append(HEX_CHARS_ARRAY[firstIndex])
+        result.append(HEX_CHARS_ARRAY[secondIndex])
+    }
+    return result.toString()
+}
