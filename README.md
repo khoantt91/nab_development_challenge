@@ -16,6 +16,7 @@
 ![Alt text](https://github.com/khoantt91/nab_development_challenge/blob/master/app_overview.png)
 
 ## App Folder Package Structure
+![Alt text](https://github.com/khoantt91/nab_development_challenge/blob/master/app_package_structure.png)
 * "common" package: store common base class, such as: BaseActivity, BaseFragment, BaseViewModel, BaseRecyclerAdapter, ApplicationGlideModule and GsonTypeAdapter.
 * "model" package: all of application models
 * "repository" package: contain data business logic. There are 3 package in repository: datastore, local and network. Each package will have single reposibility for retriving or inserting data and data in repository will not be retrived directly but it will through a wapper class like RepositoryDataSource.
