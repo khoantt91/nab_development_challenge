@@ -11,7 +11,9 @@ import com.example.nabchallenge.R
 import com.example.nabchallenge.common.fragment.BaseFragment
 import com.example.nabchallenge.databinding.FragmentDashboardBinding
 import com.example.nabchallenge.model.WeatherInfo
+import com.example.nabchallenge.utils.log.wLog
 import com.example.nabchallenge.utils.onDebounceClick
+import com.example.nabchallenge.utils.security.KeystoreCrypto
 
 class DashboardFragment : BaseFragment<FragmentDashboardBinding>(), WeatherInfoRecyclerAdapter.WeatherInfoRecyclerAdapterListener {
 

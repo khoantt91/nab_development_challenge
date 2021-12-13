@@ -8,6 +8,7 @@ import com.example.nabchallenge.repository.datastore.dj.DataStoreModule
 import com.example.nabchallenge.repository.network.dj.NetworkModule
 import com.example.nabchallenge.repository.Repository
 import com.example.nabchallenge.repository.local.dj.LocalModule
+import com.example.nabchallenge.utils.security.KeystoreCrypto
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -18,6 +19,10 @@ class AppModule(private val app: App) {
     @Singleton
     @Provides
     fun provideApplicationContext(): Context = app
+
+    @Singleton
+    @Provides
+    fun provideKeystoreCrypto(context: Context) = KeystoreCrypto(context)
 
     @Singleton
     @Provides

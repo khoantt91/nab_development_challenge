@@ -21,7 +21,7 @@ class SplashViewModel constructor(val repository: Repository) : BaseViewModel(re
 
     fun loadPrepareData(): MutableLiveData<Boolean> {
         viewModelScope.launch {
-            delay(2000)
+            delay(1000)
             /* Assuming the user is logged in or not? */
             val result = repository.getCurrentToken()
             if (result.success?.isNotEmpty() == true) prepareDataCompleted.postValue(true)

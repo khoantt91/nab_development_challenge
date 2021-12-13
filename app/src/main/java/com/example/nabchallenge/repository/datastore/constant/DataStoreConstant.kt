@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 object DataStoreConstant {
 
     val DATA_STORE_NAME = "Settings"
+    val ALIAS_KEY_STORE = "DataStoreAliasKey"
 
     /* Define Reference Key */
     object PreferenceKey {
