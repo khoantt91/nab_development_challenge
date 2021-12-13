@@ -10,11 +10,11 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
-        android:background="@color/md_blue_700"
+        android:background="?colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@color/md_white_1000" />
+        app:titleTextColor="?colorOnPrimary" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_tiny"
         android:hint="@string/dashboard_weather_type_city_name"
+        android:imeOptions="actionDone"
         android:maxLines="1"
         android:scrollHorizontally="true"
         android:singleLine="true"
